@@ -1,0 +1,22 @@
+template: hager-witty-plus-modbus
+products:
+  - brand: Hager
+    description:
+      generic: witty plus (Modbus)
+capabilities: ["mA", "rfid", "1p3p", "meter", "dim"]
+requirements:
+  description:
+    de: |
+      Modbus TCP ist standardmäßig deaktiviert und muss in der Hager Charge App unter Lastmanagement aktiviert werden. Es ist nur eine gleichzeitige Modbus-TCP-Verbindung möglich.
+      Für die Steuerung ohne RFID muss die Wallbox auf Freigabe/Freies Laden (ohne Authentifizierung) eingestellt sein, sonst bleibt sie in WAIT_AUTH.
+    en: |
+      Modbus TCP is disabled by default and must be enabled in the Hager Charge app under Load Management. Only one simultaneous Modbus TCP connection is supported.
+      For control without RFID, set the wallbox to free charging (no authentication), otherwise it stays in WAIT_AUTH.
+  evcc: ["sponsorship"]
+params:
+  - name: modbus
+    choice: ["tcpip"]
+    id: 1
+render: |
+  type: hager-witty-plus-modbus
+  {{- include "modbus" . }}
